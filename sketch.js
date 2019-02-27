@@ -2,7 +2,7 @@ function setup() {
   createCanvas(screen.width, screen.height);
 }
 
-var length = screen.width / 2;
+var length = float(screen.width / 2);
 var array = [];
 var colour = [];
 var a = 0;
@@ -102,9 +102,28 @@ function draw() {
     text(hrs + ':' + min + ':' + sec, 10, 25);
     text(b, 10, 50);
   } else {
+    translate(height, 0);
+    rotate(-3*PI/2);
+    fill(255);
+    var hrs = millis() / 3600000;
+    var min = millis() / 60000;
+    var sec = millis() / 1000;
+    hrs = floor(hrs);
+    min = floor(min);
+    while (min > 60) {
+      min = min - 60;
+    }
+    while (sec > 60) {
+      sec = sec - 60;
+    }
+    sec = round(100*sec)/100;
+    textSize(25);
+    text(hrs + ':' + min + ':' + sec, 10, 25);
+    text(b, 10, 50);
+    fullscreen(false);
     console.log(hrs + ':' + min + ':' + sec);
-    console.log(b)
-      while (true) {
+    console.log(b);
+    while (true) {
     }
   }
 };
