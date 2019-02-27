@@ -1,8 +1,8 @@
 function setup() {
-  createCanvas(window.outerWidth, window.outerHeight);
+  createCanvas(screen.width, screen.height);
 }
 
-var length = window.outerWidth / 2;
+var length = screen.width / 2;
 var array = [];
 var colour = [];
 var a = 0;
