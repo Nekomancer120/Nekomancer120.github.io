@@ -2,7 +2,7 @@ function setup() {
   createCanvas(screen.width, screen.height);
 }
 
-var length = float(screen.width / 2);
+var length = Math.float(screen.width / 2);
 var array = [];
 var colour = [];
 var a = 0;
