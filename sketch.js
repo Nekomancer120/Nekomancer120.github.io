@@ -37,8 +37,10 @@ function setup() {
   sel = createSelect();
   sel.position(10, 65);
   sel.option('--Sort Method--')
-  sel.option('bubble sort');
-  sel.option('bubble sort (random)')
+  sel.option('Bubble Sort');
+  sel.option('Bubble Sort (Random)');
+  sel.option('Quick Sort');
+  sel.option('Quick Sort (Random)');
   sel.width = numBars.width;
 
   button = createButton('go');
@@ -54,14 +56,24 @@ function setup() {
   button.mouseReleased(function() {
     if (sel.value() != "--Sort Method--") {
 
-      if (sel.value() == "bubble sort") {
+      if (sel.value() == "Bubble Sort") {
         rand = false;
         bubbleSort();
       }
 
-      if (sel.value() == "bubble sort (random)") {
+      if (sel.value() == "Bubble Sort (Random)") {
         rand = true;
         bubbleSort();
+      }
+
+      if (sel.value() == "Quick Sort") {
+        rand = false;
+        quickSort();
+      }
+
+      if (sel.value() == "Quick Sort (Random)") {
+        rand = true;
+        quickSort();
       }
       go = true;
     }
