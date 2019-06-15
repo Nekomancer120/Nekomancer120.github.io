@@ -103,9 +103,8 @@ var h = "";
 var t = "00:00:00";
 
 function bubbleSort() {
-  let fs = fullscreen();
   if (!started) {
-    fullscreen(!fs);
+    fullscreen(true);
     sel.hide();
     button.hide();
     numBars.hide();
