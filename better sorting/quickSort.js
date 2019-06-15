@@ -3,7 +3,6 @@ let numDone = 0;
 
 async function quickSort(arr, start, end) {
   if (start >= end) {
-    console.log("start >= end");
     return;
   }
   let index = await partition(arr, start, end);
