@@ -7,7 +7,7 @@ var sel, button, numBars, delIn;
 var gradient = [];
 var col;
 var rand;
-var delay = 10;
+var delay = 1;
 
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
