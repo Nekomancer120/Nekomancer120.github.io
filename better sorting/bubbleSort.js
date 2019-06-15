@@ -7,7 +7,16 @@ async function bubbleSort(arr) {
       current++;
     }
     current = 0;
-    progress++;
+    numDone = 0;
+    progress = 0;
+    for (var i = 0; i < bars.length; i++) {
+      if (checkDone(bars, i)) {
+        numDone++;
+        progress++;
+      }
+    }
+    if (numDone == numOfBars) {
+      await finish();
+    }
   }
-  await finish();
 }
