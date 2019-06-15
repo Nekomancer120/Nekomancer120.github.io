@@ -1,6 +1,4 @@
-//does this not work
-
-function bubbleSort() {
+function quickSort() {
   for (var i = 0; i < numOfBars; i++) {
     if (a2 < gradient.length) {
       if (a1 < 1) {
