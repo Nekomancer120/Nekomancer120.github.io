@@ -1,3 +1,5 @@
+var qsArr = [];
+
 function quickSort() {
   for (var i = 0; i < numOfBars; i++) {
     if (a2 < gradient.length) {
@@ -78,6 +80,21 @@ function quickSort() {
   }
 
   window.setInterval(function() {
-
-  }, 1)
+    if (progress < numOfBars) {
+      if (current < bars.length - progress - 1) {
+        current++;
+        
+      } else {
+        progress++;
+        current = 0;
+      }
+    } else {
+      done = true;
+      started = false;
+      button.show();
+      sel.show();
+      numBars.show();
+      // go = false;
+    }
+  }, 1000)
 }

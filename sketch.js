@@ -41,6 +41,13 @@ function setup() {
   sel.option('Bubble Sort (Random)');
   sel.option('Quick Sort');
   sel.option('Quick Sort (Random)');
+  sel.changed(function() {
+    if (sel.value() == "Quick Sort" || sel.value() == "Quick Sort (Random)") {
+      numBars.attribute('placeholder', 'Not Working');
+    } else {
+      numBars.attribute('placeholder', 'Number of bars: ' + numOfBars);
+    }
+  })
   sel.width = numBars.width;
 
   button = createButton('go');
