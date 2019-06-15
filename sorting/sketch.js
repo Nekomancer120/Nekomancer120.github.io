@@ -3,18 +3,11 @@ var numOfBars = screen.width / 2;
 var done = false;
 var started = false;
 var go = false;
-var sel, button, numBars;
+var sel, button, numBars, delIn;
 var gradient = [];
 var col;
 var rand;
-
-function wait(ms) {
-
-  var d = new Date();
-  var d2 = null;
-  do { d2 = new Date(); }
-  while(d2-d < ms);
-}
+var delay = 10;
 
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
@@ -33,10 +26,15 @@ function setup() {
   numBars = createInput();
   numBars.position(10, 43);
   numBars.attribute('placeholder', 'Number of bars: ' + numOfBars);
+  numBars.width = numBars.width + 3
+
+  delIn = createInput();
+  delIn.position(10, 21);
+  delIn.attribute('placeholder', 'Delay: ' + delay + " ms");
 
   sel = createSelect();
   sel.position(10, 65);
-  sel.option('--Sort Method--')
+  sel.option(' <-------Sort Method-------> ')
   sel.option('Bubble Sort');
   sel.option('Bubble Sort (Random)');
   sel.option('Quick Sort');
@@ -57,33 +55,15 @@ function setup() {
       numOfBars = numBars.value();
     }
 
+    if (delIn.value() != "") {
+      delay = delIn.value();
+    }
+
     bars = [];
 
   })
   button.mouseReleased(function() {
-    if (sel.value() != "--Sort Method--") {
-
-      if (sel.value() == "Bubble Sort") {
-        rand = false;
-        bubbleSort();
-      }
-
-      if (sel.value() == "Bubble Sort (Random)") {
-        rand = true;
-        bubbleSort();
-      }
-
-      if (sel.value() == "Quick Sort") {
-        rand = false;
-        quickSort();
-      }
-
-      if (sel.value() == "Quick Sort (Random)") {
-        rand = true;
-        quickSort();
-      }
-      go = true;
-    }
+    start();
   });
 
   createCanvas(windowWidth, windowHeight);
@@ -116,4 +96,52 @@ function draw() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+}
+
+async function partition(arr, start, end) {
+  for (let i = start; i < end; i++) {
+    states[i] = 1;
+  }
+
+  let pivotIndex = start;
+  let pivotValue = arr[end].height;
+  for (var i = start; i < end; i++) {
+    if (arr[i].height < pivotValue) {
+      await swap(arr, i, pivotIndex);
+      states[pivotIndex] = -1;
+      pivotIndex++;
+      states[pivotIndex] = 0;
+    }
+  }
+
+  await swap(arr, pivotIndex, end);
+
+  for (let i = start; i < end; i++) {
+    if (i != pivotIndex) {
+      states[i] = -1;
+    }
+  }
+
+  return pivotIndex;
+}
+
+async function swap(arr, a, b) {
+  await wait(delay);
+  let temp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = temp;
+}
+
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function finish() {
+  done = true;
+  started = false;
+  button.show();
+  sel.show();
+  numBars.show();
+  delIn.show();
+  // go = false;
 }
