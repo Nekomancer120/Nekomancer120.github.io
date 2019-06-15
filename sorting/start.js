@@ -51,38 +51,6 @@ function start() {
     t = "00:00:00";
     a1 = 0;
     a2 = 0;
-    window.setInterval(function() {
-      if (!done) {
-        //timer
-        if (sec < 60) {
-          sec++;
-        } else {
-          if (mi < 60) {
-            mi++;
-          } else {
-            hr++;
-            mi = 0
-          }
-          sec = 0;
-        }
-        if (sec-10 < 0) {
-          s = "0" + sec.toString();
-        } else {
-          s = sec.toString();
-        }
-        if (mi-10 < 0) {
-          m = "0" + mi.toString();
-        } else {
-          m = mi.toString();
-        }
-        if (hr-10 < 0) {
-          h = "0" + hr.toString();
-        } else {
-          h = hr.toString();
-        }
-        t = h + ":" + m + ":" + s;
-      }
-    }, 1000)
   }
 
   if (sel.value() != "--Sort Method--") {
