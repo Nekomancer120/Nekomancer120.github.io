@@ -1,3 +1,5 @@
+//does this not work
+
 function bubbleSort() {
   for (var i = 0; i < numOfBars; i++) {
     if (a2 < gradient.length) {
@@ -78,6 +80,6 @@ function bubbleSort() {
   }
 
   window.setInterval(function() {
-    
+
   }, 1)
 }
