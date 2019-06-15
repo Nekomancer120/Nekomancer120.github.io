@@ -57,18 +57,9 @@ function setup() {
           a1 = 0;
         }
       }
-      if (a1 > 0) {
-        if (a1 < 1) {
-          col = lerpColor(gradient[a2], gradient[a2+1], a1);
-          console.log(col, a1, a2);
-        } else {
-          col = gradient[a2 + 1];
-          console.log(col, a1, a2);
-        }
-      } else {
-        col = gradient[a2];
-        console.log(col, a1, a2);
-      }
+
+      col = lerpColor(gradient[a2], gradient[a2+1], a1);
+
       var h = (screen.height/(numOfBars))*(i+1);
       var w = (screen.width/(numOfBars));
       var l = new bar(w, h, col);
@@ -103,8 +94,9 @@ var h = "";
 var t = "00:00:00";
 
 function bubbleSort() {
+  let fs = fullscreen();
   if (!started) {
-    fullscreen(true);
+    fullscreen(!fs);
     sel.hide();
     button.hide();
     numBars.hide();
@@ -119,6 +111,8 @@ function bubbleSort() {
     m = "";
     h = "";
     t = "00:00:00";
+    a1 = 0;
+    a2 = 0;
     window.setInterval(function() {
       if (!done) {
         //timer
