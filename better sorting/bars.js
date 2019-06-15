@@ -1,7 +1,8 @@
-function bar(w, h, color) {
+function bar(w, h, color, pos) {
   this.width = w;
   this.height = h;
   this.color = color;
+  this.pos = pos;
 
   this.show = function(position) {
     this.position = position;

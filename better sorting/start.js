@@ -24,7 +24,7 @@ function start() {
       h = (screen.height/(numOfBars))*(i+1);
     }
     var w = (screen.width/(numOfBars));
-    var l = new bar(w, h, col);
+    var l = new bar(w, h, col, i);
     bars.push(l);
     states[i] = -1;
   }

@@ -40,7 +40,7 @@ function setup() {
   sel.option('Quick Sort');
   sel.option('Quick Sort (Random)');
   sel.changed(function() {
-    if (sel.value() == "Quick Sort" || sel.value() == "Quick Sort (Random)") {
+    if (false) {
       numBars.attribute('placeholder', 'Work in Progress!');
     } else {
       numBars.attribute('placeholder', 'Number of bars: ' + numOfBars);
