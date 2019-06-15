@@ -9,7 +9,7 @@ async function quickSort(arr, start, end) {
   states[index] = -1;
 
   // await Promise.all([
-    await quickSort(arr, start, index - 1);
+    await quickSort(arr, start, index - 1),
     await quickSort(arr, index + 1, end)
   // ]);
   numDone = 0;
