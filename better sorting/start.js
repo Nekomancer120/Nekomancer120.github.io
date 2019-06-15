@@ -64,11 +64,11 @@ function start() {
     }
 
     if (sel.value() == "Quick Sort") {
-      quickSort(bars, 0, bar.length - 1);
+      quickSort(bars, 0, bars.length - 1);
     }
 
     if (sel.value() == "Quick Sort (Random)") {
-      quickSort(bars, 0, bar.length - 1);
+      quickSort(bars, 0, bars.length - 1);
     }
     go = true;
   }
