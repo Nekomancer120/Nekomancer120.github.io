@@ -1,5 +1,5 @@
 async function start() {
-  img1 = loadImage(imgIn.value());
+  //img1 = loadImage(imgIn.value());
 
   if (sel.value().includes("Random")) {
     rand = true;
