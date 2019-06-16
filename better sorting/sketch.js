@@ -196,9 +196,9 @@ function timer() {
 function handleFile(file) {
   print(file);
   if (file.type === 'image') {
-    img = createImg(file.data);
-    img.hide();
+    img1 = createImg(file.data);
+    img1.hide();
   } else {
-    img = null;
+    img1 = null;
   }
 }
