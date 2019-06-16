@@ -1,5 +1,5 @@
 async function start() {
-  if (true) {
+  if (!sel.value().includes('Picture')) {
 
     if (sel.value().includes("Random")) {
       rand = true;
