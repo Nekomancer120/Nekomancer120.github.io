@@ -3,25 +3,32 @@ var numOfBars = screen.width / 2;
 var done = false;
 var started = false;
 var go = false;
-var sel, button, numBars, delIn;
+var sel, button, numBars, delIn, imgIn, img1;
 var gradient = [];
 var col;
 var rand;
 var delay = 1;
+var suffleDone = false;
 
-function shuffleArray(array) {
+async function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
+    // await wait(1)
     var j = Math.floor(Math.random() * (i + 1));
     var temp = array[i];
     array[i] = array[j];
     array[j] = temp;
   }
+  suffleDone = true;
 }
 
 var a1 = 0;
 var a2 = 0;
 function setup() {
   gradient = [color(255, 0, 0), color(255, 127.5, 0),color(255, 255, 0),color(0, 255, 0),color(0, 0, 255),color(255, 0, 255)];
+
+  imgIn = createFileInput(handleFile);
+  imgIn.position(10, 87);
+  imgIn.hide();
 
   numBars = createInput();
   numBars.position(10, 43);
@@ -37,13 +44,17 @@ function setup() {
   sel.option(' <-------Sort Method-------> ')
   sel.option('Bubble Sort');
   sel.option('Bubble Sort (Random)');
+  sel.option('Bubble Sort Picture');
   sel.option('Quick Sort');
   sel.option('Quick Sort (Random)');
+  sel.option('Quick Sort Picture');
   sel.changed(function() {
-    if (false) {
+    if (sel.value().includes('Picture')) {
       numBars.attribute('placeholder', 'Work in Progress!');
+      imgIn.show();
     } else {
       numBars.attribute('placeholder', 'Number of bars: ' + numOfBars);
+      imgIn.hide();
     }
   })
   sel.width = numBars.width;
@@ -144,6 +155,7 @@ function finish() {
   sel.show();
   numBars.show();
   delIn.show();
+  suffleDone = false;
   // go = false;
 }
 function timer() {
@@ -179,4 +191,14 @@ function timer() {
       t = h + ":" + m + ":" + s;
     }
   }, 1000)
+}
+
+function handleFile(file) {
+  print(file);
+  if (file.type === 'image') {
+    img = createImg(file.data);
+    img.hide();
+  } else {
+    img = null;
+  }
 }

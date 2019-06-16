@@ -1,4 +1,6 @@
-function start() {
+async function start() {
+  img1 = loadImage(imgIn.value());
+
   if (sel.value().includes("Random")) {
     rand = true;
   } else {
@@ -30,9 +32,6 @@ function start() {
   }
 
   if (!started) {
-
-    shuffleArray(bars);
-
     fullscreen(true);
     sel.hide();
     button.hide();
@@ -51,25 +50,26 @@ function start() {
     t = "00:00:00";
     a1 = 0;
     a2 = 0;
-  }
+    await shuffleArray(bars);
 
-  if (sel.value() != "--Sort Method--") {
+    if (sel.value() != "--Sort Method--") {
 
-    if (sel.value() == "Bubble Sort") {
-      bubbleSort(bars);
+      if (sel.value() == "Bubble Sort") {
+        bubbleSort(bars);
+      }
+
+      if (sel.value() == "Bubble Sort (Random)") {
+        bubbleSort(bars);
+      }
+
+      if (sel.value() == "Quick Sort") {
+        quickSort(bars, 0, bars.length - 1);
+      }
+
+      if (sel.value() == "Quick Sort (Random)") {
+        quickSort(bars, 0, bars.length - 1);
+      }
+      go = true;
     }
-
-    if (sel.value() == "Bubble Sort (Random)") {
-      bubbleSort(bars);
-    }
-
-    if (sel.value() == "Quick Sort") {
-      quickSort(bars, 0, bars.length - 1);
-    }
-
-    if (sel.value() == "Quick Sort (Random)") {
-      quickSort(bars, 0, bars.length - 1);
-    }
-    go = true;
   }
 }
